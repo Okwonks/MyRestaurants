@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.albert.myrestaurants.R;
 import com.example.albert.myrestaurants.adapters.RestaurantListAdapter;
