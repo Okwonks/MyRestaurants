@@ -25,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:text="MyRestaurants"
         android:textColor="@color/colorTextIcons"
-        android:textSize="50sp"
+        android:textSize="45sp"
         android:textStyle="bold" />
 
     <Button

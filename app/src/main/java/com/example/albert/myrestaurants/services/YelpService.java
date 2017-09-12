@@ -29,12 +29,13 @@ public class YelpService {
         urlBuilder.addQueryParameter(Constants.YELP_LOCATION_QUERY_PARAMETER, location);
         String url = urlBuilder.build().toString();
 
+        OkHttpClient client = new OkHttpClient(); // Make new client before the Request below is made.
+
         Request request = new Request.Builder()
                 .header("Authorization", Constants.YELP_TOKEN)
                 .url(url)
                 .build();
 
-        OkHttpClient client = new OkHttpClient();
 
         Call call = client.newCall(request);
         call.enqueue(callback);

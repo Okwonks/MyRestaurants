@@ -34,7 +34,6 @@ public class RestaurantsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_restaurants);
         ButterKnife.bind(this);
 
-        //Intent calls the Intent made in main activity and shows the location.
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
 
@@ -60,7 +59,8 @@ public class RestaurantsActivity extends AppCompatActivity {
                     public void run() {
                         mAdapter = new RestaurantListAdapter(getApplicationContext(), mRestaurants);
                         mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RestaurantsActivity.this);
+                        RecyclerView.LayoutManager layoutManager =
+                                new LinearLayoutManager(RestaurantsActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                     }
@@ -68,5 +68,5 @@ public class RestaurantsActivity extends AppCompatActivity {
             }
         });
     }
-
 }
+
