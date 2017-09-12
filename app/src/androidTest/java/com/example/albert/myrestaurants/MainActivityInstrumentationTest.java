@@ -1,8 +1,9 @@
 package com.example.albert.myrestaurants;
 
 
-import android.support.test.espresso.core.deps.guava.base.Strings;
 import android.support.test.rule.ActivityTestRule;
+
+import com.example.albert.myrestaurants.ui.MainActivity;
 
 import org.junit.Rule;
 import org.junit.Test;

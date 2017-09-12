@@ -1,6 +1,7 @@
-package com.example.albert.myrestaurants;
+package com.example.albert.myrestaurants.services;
 
-import android.util.Log;
+import com.example.albert.myrestaurants.Constants;
+import com.example.albert.myrestaurants.models.Restaurant;
 
 import org.json.JSONArray;
 import org.json.JSONException;
