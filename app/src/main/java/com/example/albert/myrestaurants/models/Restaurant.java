@@ -1,11 +1,14 @@
 package com.example.albert.myrestaurants.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
 /**
  * Created by albert on 9/12/17.
  */
 
+@Parcel
 public class Restaurant {
     private String mName;
     private String mPhone;
