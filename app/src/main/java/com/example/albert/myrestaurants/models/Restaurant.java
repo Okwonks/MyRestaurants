@@ -20,6 +20,8 @@ public class Restaurant {
     private double mLongitude;
     private ArrayList<String> mCategories = new ArrayList<>();
 
+    public Restaurant() {}
+
     public Restaurant(String name, String phone, String website, double rating, String imageUrl, ArrayList<String> address, double latitude, double longitude, ArrayList<String> categories) {
         this.mName = name;
         this.mPhone = phone;

@@ -70,9 +70,12 @@ public class YelpService {
                     ArrayList<String> categories = new ArrayList<>();
                     JSONArray categoriesJSON = restaurantJSON.getJSONArray("categories");
 
-//                    for (int y = 0; y < categoriesJSON.length(); y++) {
+                    for (int y = 0; y < categoriesJSON.length(); y++) {
+                        JSONObject categoryJSON = categoriesJSON.getJSONObject(y);
+                        String category = categoryJSON.getString("alias");
+                        categories.add(category);
 //                        categories.add(categoriesJSON.getJSONArray(y).get(0).toString());
-//                    }
+                    }
                     Restaurant restaurant = new Restaurant(name, phone, website, rating,
                             imageUrl, address, latitude, longitude, categories);
                     restaurants.add(restaurant);
