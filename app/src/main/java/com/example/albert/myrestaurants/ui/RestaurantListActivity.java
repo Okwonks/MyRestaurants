@@ -1,12 +1,15 @@
 package com.example.albert.myrestaurants.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.example.albert.myrestaurants.Constants;
 import com.example.albert.myrestaurants.R;
 import com.example.albert.myrestaurants.adapters.RestaurantListAdapter;
 import com.example.albert.myrestaurants.models.Restaurant;
@@ -23,6 +26,9 @@ import okhttp3.Response;
 
 public class RestaurantListActivity extends AppCompatActivity {
     public static final String TAG = RestaurantListActivity.class.getSimpleName();
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentAdress;
+
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private RestaurantListAdapter mAdapter;
 
@@ -33,6 +39,12 @@ public class RestaurantListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
         ButterKnife.bind(this);
+
+        /*mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAdress = mSharedPreferences.getString(Constants.PREFERENCE_LOCATION_KEY, null);
+        if (mRecentAdress != null) {
+            getRestaurants(mRecentAdress);
+        }*/
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
