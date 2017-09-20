@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,8 +14,11 @@ import android.graphics.Typeface;
 
 import com.example.albert.myrestaurants.Constants;
 import com.example.albert.myrestaurants.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /*private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;*/
     private DatabaseReference mSearchedLocationReference;
+    private ValueEventListener mSearchedLocationReferenceListener;
 
     @Bind(R.id.findRestaurantsButton) Button mFindRestaurantsButton;
     @Bind(R.id.locationEditText) EditText mLocationEditText;
@@ -37,6 +42,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .getReference()
                 .child(Constants.FIREBASE_SEARCHED_CHILD_LOCATION);
 
+        mSearchedLocationReferenceListener = mSearchedLocationReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot locationSnapshot: dataSnapshot.getChildren()) {
+                    String location = locationSnapshot.getValue().toString();
+                    Log.d("location updated", "Location: " + location);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // If error occurs, UI is updated here.
+            }
+        });
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -48,6 +69,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mEditor = mSharedPreferences.edit();*/
 
         mFindRestaurantsButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
     }
 
     @Override
