@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
+            android:contentDescription="@string/restaurant_image"
             android:layout_width="130dp"
             android:layout_height="100dp"
             android:id="@+id/restaurantImageView"
@@ -16,12 +17,14 @@
             android:scaleType="centerCrop"/>
             
             <ImageView
+                android:contentDescription="@string/drag_icon"
                 android:id="@+id/dragIcon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_alignStart="@+id/restaurantImageView"
                 android:layout_alignLeft="@+id/restaurantImageView"
                 android:layout_alignBottom="@+id/restaurantImageView"
-                android:gravity="bottom|left"
+                android:gravity="bottom|start"
                 android:src="@drawable/ic_reorder_white_24dp"/>
 
     </RelativeLayout>
@@ -29,43 +32,40 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:background="#ffffff"
+        android:layout_height="match_parent"
         android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/restaurantNameTextView"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:text="Restaurant Name"
+            android:text="@string/restaurant_name"
             android:textColor="@color/colorPrimary"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="One Cuisine Type"
+            android:text="@string/cuisine_type"
             android:id="@+id/categoryTextView"
-            android:layout_below="@+id/restaurantNameTextView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:textStyle="italic"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rating"
-            android:id="@+id/ratingTextView"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/colorAccent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rating"
+                android:id="@+id/ratingTextView"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/colorAccent"/>
         </RelativeLayout>
-
     </LinearLayout>
 
 </LinearLayout>
