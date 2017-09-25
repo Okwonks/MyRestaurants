@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.albert.myrestaurants.Constants;
 import com.example.albert.myrestaurants.R;
@@ -36,6 +38,8 @@ public class RestaurantListActivity extends AppCompatActivity {
     private String mRecentAddress;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.progressBar) ProgressBar mProgressBar;
+
     private RestaurantListAdapter mAdapter;
 
     public ArrayList<Restaurant> mRestaurants = new ArrayList<>();
@@ -114,6 +118,7 @@ public class RestaurantListActivity extends AppCompatActivity {
                                 new LinearLayoutManager(RestaurantListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
+                        mProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
             }
@@ -124,4 +129,3 @@ public class RestaurantListActivity extends AppCompatActivity {
         mEditor.putString(Constants.PREFERENCE_LOCATION_KEY, location).apply();
     }
 }
-

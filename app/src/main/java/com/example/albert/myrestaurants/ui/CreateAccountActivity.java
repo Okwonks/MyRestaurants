@@ -54,6 +54,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         createAuthProgressDialog();
     }
 
+
     private void createNewUser() {
         mName = mNameEditText.getText().toString().trim();
         final String email = mEmailEditText.getText().toString().trim();
