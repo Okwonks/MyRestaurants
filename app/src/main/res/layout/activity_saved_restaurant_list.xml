@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.albert.myrestaurants.ui.RestaurantListActivity">
+    tools:context=".ui.RestaurantListActivity">
 
     <RelativeLayout
         android:id="@+id/loadingPanel"
@@ -12,18 +12,17 @@
         android:gravity="center" >
 
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/progressBar1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true" />
     </RelativeLayout>
 
-
     <fragment
         android:id="@+id/fragmentRestaurantList"
-        android:name="com.example.albert.myrestaurants.ui.RestaurantListFragment"
+        android:name="com.example.albert.myrestaurants.ui.SavedRestaurantListFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_restaurant_list"/>
+        tools:layout="@layout/fragment_saved_restaurant_list"/>
 
 </RelativeLayout>
