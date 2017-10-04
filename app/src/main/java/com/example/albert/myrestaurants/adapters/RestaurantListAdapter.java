@@ -17,6 +17,7 @@ import com.example.albert.myrestaurants.R;
 import com.example.albert.myrestaurants.models.Restaurant;
 import com.example.albert.myrestaurants.ui.RestaurantDetailActivity;
 import com.example.albert.myrestaurants.ui.RestaurantDetailFragment;
+import com.example.albert.myrestaurants.util.OnRestaurantSelectedListener;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -31,16 +32,18 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
     private static final int MAX_HEIGHT = 200;
     private ArrayList<Restaurant> mRestaurants = new ArrayList<>();
     private Context mContext;
+    private OnRestaurantSelectedListener mRestaurantSelectedListener;
 
-    public RestaurantListAdapter(Context context, ArrayList<Restaurant> restaurants) {
+    public RestaurantListAdapter(Context context, ArrayList<Restaurant> restaurants, OnRestaurantSelectedListener onRestaurantSelectedListener) {
         mContext = context;
         mRestaurants = restaurants;
+        mRestaurantSelectedListener = onRestaurantSelectedListener;
     }
 
     @Override
     public RestaurantListAdapter.RestaurantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_list_item, parent, false);
-        RestaurantViewHolder viewHolder = new RestaurantViewHolder(view);
+        RestaurantViewHolder viewHolder = new RestaurantViewHolder(view, mRestaurants, mRestaurantSelectedListener);
         return viewHolder;
     }
 
@@ -64,20 +67,23 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         private int mOrientation;
 
 
-        public RestaurantViewHolder(View itemView) {
+        public RestaurantViewHolder(View itemView, ArrayList<Restaurant> restaurants, OnRestaurantSelectedListener restaurantSelectedListener) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
-            itemView.setOnClickListener(this);
             mOrientation = itemView.getResources().getConfiguration().orientation;
+            mRestaurants = restaurants;
+            mRestaurantSelectedListener = restaurantSelectedListener;
             if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
                 createDetailFragment(0);
             }
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
+            mRestaurantSelectedListener.onRestaurantSelectedListener(itemPosition, mRestaurants);
             if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
                 createDetailFragment(itemPosition);
             } else {

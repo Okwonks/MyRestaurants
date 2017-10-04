@@ -11,12 +11,12 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SavedRestaurantListActivity extends AppCompatActivity {
-    @Bind(R.id.progressBar1) ProgressBar mProgressBar1;
+//    @Bind(R.id.progressBar1) ProgressBar mProgressBar1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_restaurant_list);
-        ButterKnife.bind(this);
-        mProgressBar1.setVisibility(View.INVISIBLE);
+//        ButterKnife.bind(this);
+//        mProgressBar1.setVisibility(View.INVISIBLE);
     }
 }
